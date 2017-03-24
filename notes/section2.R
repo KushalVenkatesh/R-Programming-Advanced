@@ -10,3 +10,5 @@ summary(fin)
 # convert columns to factor
 fin$ID <- factor(fin$ID)
 fin$Inception <- factor(fin$Inception)
+
+#Factor Variable Trap (FVT)
