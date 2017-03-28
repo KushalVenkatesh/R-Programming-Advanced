@@ -1,6 +1,7 @@
 setwd("C:/Users/Jan Pascal Kunkler/git/R-Programming-Advanced/datasets/")
 getwd()
-fin <- read.csv('Future-500.csv')
+# basic import: fin <- read.csv('Future-500.csv')
+fin <- read.csv('Future-500.csv', na.strings = c(""))
 
 # Take a first look at the data
 head(fin)
@@ -36,3 +37,10 @@ fin$Revenue <- as.numeric(fin$Revenue)
 fin$Growth <- as.numeric(fin$Growth)
 
 summary(fin) # <-- all 3 columns are recognized and analyzed as numeric. Success!
+
+#----------------------- Deal with NA's
+
+complete.cases(fin) # check for all rows which are complete <-- contain NO NA VALUES!
+
+# subset with inversed logic
+fin[!complete.cases(fin),]
