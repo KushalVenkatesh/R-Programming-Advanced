@@ -43,3 +43,14 @@ util_under_90_flag
 list_rl1 <- list("RL1", util_stats_rl1, util_under_90_flag)
 
 list_rl1
+
+# Set names for list
+names(list_rl1) <- c("Machine", "Stats", "LowThreshold")
+list_rl1
+
+# Check out mean of Stats
+list_rl1$Stats[2]
+
+# Another way. Like with dataframes.
+list_rl1 <- list(Machine="RL1", Stats=util_stats_rl1, LowThreshold=util_under_90_flag)
+list_rl1
