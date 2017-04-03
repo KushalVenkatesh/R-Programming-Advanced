@@ -18,3 +18,28 @@ util$Timestamp <- NULL
 
 # rearrange columns
 util <- util[,c(4,1,2,3)]
+
+# Subset Machine RL1
+RL1 <- util[util$Machine == "RL1",]
+summary(RL1)
+
+# To get rid of "ghost" factors, rerun factor() on Machine variable
+RL1$Machine <- factor(RL1$Machine)
+
+# Construct list:
+# Character: Machine Name
+# Vector: (min, mean, max) Utilization for the month (excluding unknown hours)
+# Logical: Has Utilization ever fallen below 90%? TRUE/FALSE
+
+util_stats_rl1 <- c(min(RL1$Utilization, na.rm = T), 
+                    mean(RL1$Utilization, na.rm = T), 
+                    max(RL1$Utilization, na.rm = T))
+util_stats_rl1
+
+util_under_90_flag <- length(which(RL1$Utilization < 0.9)) > 0
+util_under_90_flag
+
+# finally create the list
+list_rl1 <- list("RL1", util_stats_rl1, util_under_90_flag)
+
+list_rl1
