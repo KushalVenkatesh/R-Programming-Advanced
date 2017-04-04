@@ -73,3 +73,32 @@ list_rl1[4] <- NULL
 list_rl1$Data <- RL1 
 
 summary(list_rl1)
+
+list_rl1$UnknownHours[1]
+
+# Subsetting a list
+list_rl1[1:3]
+list_rl1[c(1,4)]
+sublist_rl1 <- list_rl1[c("Machine", "Stats")]
+sublist_rl1
+sublist_rl1$Stats[2] # Mean 
+
+# Timeseries Plot
+#install.packages("ggplot2")
+library(ggplot2)
+
+p <- ggplot(data=util)
+myplot <- p + geom_line(aes(x=PosixTime, y=Utilization,
+                  color=Machine), 
+              size=1.1) +
+  facet_grid(Machine~.) +
+  geom_hline(yintercept = 0.9, color="Gray",
+             size=1.2,
+             linetype=3)
+
+# Add Plot to list
+list_rl1$Plot <- myplot
+
+# Let's look at our finisthed list
+# This will be delivered to the client
+list_rl1
