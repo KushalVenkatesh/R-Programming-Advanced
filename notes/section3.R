@@ -54,3 +54,22 @@ list_rl1$Stats[2]
 # Another way. Like with dataframes.
 list_rl1 <- list(Machine="RL1", Stats=util_stats_rl1, LowThreshold=util_under_90_flag)
 list_rl1
+
+# Add new item to list
+list_rl1[4] <- "New Information"
+list_rl1
+
+# We will ad:
+# Vector: All hours where utilization is unknown (NA)
+
+list_rl1$UnknownHours <- RL1[is.na(RL1$Utilization), "PosixTime"]
+list_rl1
+
+# Remove a component
+list_rl1[4] <- NULL
+
+# Add another component:
+# Dataframe: For this machine
+list_rl1$Data <- RL1 
+
+summary(list_rl1)
