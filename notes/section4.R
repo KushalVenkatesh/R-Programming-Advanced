@@ -60,5 +60,16 @@ lapply(Weather, rbind, NewRow=1:12)
 lapply(Weather, rowMeans)
                       # <<< (nearly) deliv 1: even better, but will improve further!
 
-
+# combining lapply() with [] operator
+Weather[[1]][1,1]
  
+lapply(Weather, "[", 1,1) # get first row first column for all items in Weather list
+
+# get first row for every item 
+lapply(Weather, "[", 1,)
+
+# get every metric just for march
+lapply(Weather, "[", ,"Mar")
+lapply(Weather, "[", , 3) # all rows but only column 3("March")
+
+
