@@ -127,4 +127,9 @@ names(which.max(Chicago[1,]))
 
 # we will have: apply - iterate over rows of the matrix
 # and we will have lapply or sapply: iterate over items in list
+# Maximum months
 sapply(Weather, apply, 1, function(x) names(which.max(x)))
+
+# Minimum months
+sapply(Weather, apply, 1, function(x) names(which.min(x)))
+
