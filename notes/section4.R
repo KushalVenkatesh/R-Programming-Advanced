@@ -47,6 +47,8 @@ apply(Houston, 1, mean)
 apply(SanFrancisco, 1, mean)
                       # <<< (nearly) deliv 1: but there is a faster way!
 
+#--------------------- lapply()
+
 # use lapply() to apply function to a list (or vector)
 lapply(Weather, t) # transpose every single matrix in our list
 
@@ -73,3 +75,10 @@ lapply(Weather, "[", ,"Mar")
 lapply(Weather, "[", , 3) # all rows but only column 3("March")
 
 
+
+# adding our own functions
+
+lapply(Weather, function(x) x[1,]) # same as above, select first row for every item in list
+
+lapply(Weather, function(x) round((x[1,] - x[2,]) / x[2,], 2))
+                            # <<< Deliv2: temp fluctuations. Will improve!
