@@ -121,3 +121,10 @@ sapply(Weather, apply, 1, min) #<< Deliv 4
 # Advanced:
 # which.max
 ?which.max
+
+which.max(Chicago[1,])
+names(which.max(Chicago[1,]))
+
+# we will have: apply - iterate over rows of the matrix
+# and we will have lapply or sapply: iterate over items in list
+sapply(Weather, apply, 1, function(x) names(which.max(x)))
