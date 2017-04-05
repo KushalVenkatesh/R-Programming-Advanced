@@ -82,3 +82,39 @@ lapply(Weather, function(x) x[1,]) # same as above, select first row for every i
 
 lapply(Weather, function(x) round((x[1,] - x[2,]) / x[2,], 2))
                             # <<< Deliv2: temp fluctuations. Will improve!
+
+
+#---------------------- sapply()
+# Simplified version of lapply()
+
+# AvgHigh_F for July
+lapply(Weather, "[", 1, 7)
+sapply(Weather, "[", 1, 7)
+
+# AvgHigh_F for 4th Quarter
+lapply(Weather, "[", 1, 10:12)
+sapply(Weather, "[", 1, 10:12)
+
+# Row Averages for all cities
+round(sapply(Weather, rowMeans),2)
+                        #<<<Deliv1!
+
+# Temperature fluctuations
+t(sapply(Weather, function(x) round((x[1,] - x[2,]) / x[2,], 2)))
+                        #<<< Deliv2: Temp fluctuations.
+
+
+# Nesting apply functions
+
+Chicago
+apply(Chicago, 1, max)
+
+# Get row maximum for each item in Weather list
+# Using own functions (LONG)
+sapply(Weather, function(x) apply(x, 1, max))
+sapply(Weather, function(x) apply(x, 1, min))
+
+# SHORT VERSION: using optional parameters
+sapply(Weather, apply, 1, max) #<< Deliv 3
+sapply(Weather, apply, 1, min) #<< Deliv 4
+
