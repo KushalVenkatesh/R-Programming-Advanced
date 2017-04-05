@@ -118,3 +118,6 @@ sapply(Weather, function(x) apply(x, 1, min))
 sapply(Weather, apply, 1, max) #<< Deliv 3
 sapply(Weather, apply, 1, min) #<< Deliv 4
 
+# Advanced:
+# which.max
+?which.max
